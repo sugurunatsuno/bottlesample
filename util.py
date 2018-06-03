@@ -28,7 +28,7 @@ def post_and_fetch_num(pair):
     cur = conn.cursor()
 
     c = cur.execute('select count(*) from phrase')
-    fetch_id = cur.fetchone()
+    fetch_id = cur.fetchone()[0]
     print(fetch_id)
 
     cur.execute("insert into phrase values({}, '{}', '{}')".format(fetch_id+1, pair[0], pair[1]))

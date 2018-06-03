@@ -1,5 +1,8 @@
+from builtins import print
+
 from bottle import route, response, request, abort, redirect
 from bottle import get, post
+import json
 
 from util import *
 
@@ -19,10 +22,7 @@ def get_pair(id):
 
 @post('/pair/update/status')
 def post_pair():
-    ja = request.forms.ja
-    other = request.forms.other
-
-    return ja, other
-
-    #id = post_and_fetch_num((ja, other))
-    #return redirect('/pair/{}'.format(id))
+    print(request.json)
+    ja = request.json['ja']
+    other = request.json['other']
+    post_and_fetch_num((ja, other))
